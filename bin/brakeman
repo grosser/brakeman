@@ -25,6 +25,10 @@ elsif options[:create_config]
 elsif options[:show_help]
   puts parser
   exit
+elsif options[:ensure_latest]
+  if error = Brakeman.esnure_latest
+    abort error
+  end
 elsif options[:show_version]
   puts "brakeman #{Brakeman::Version}"
   exit

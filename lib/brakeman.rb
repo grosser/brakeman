@@ -324,6 +324,14 @@ module Brakeman
     end
   end
 
+  def self.ensure_latest
+    current = Brakeman::Version
+    latest = Gem.latest_version_for('brakeman')
+    if current != latest
+      "Brakeman #{current} is not the latest version #{latest}"
+    end
+  end
+
   #Run a scan. Generally called from Brakeman.run instead of directly.
   def self.scan options
     #Load scanner
